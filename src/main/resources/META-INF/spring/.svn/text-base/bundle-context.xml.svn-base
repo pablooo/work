@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+  					 	http://camel.apache.org/schema/spring 
+  					 	http://camel.apache.org/schema/spring/camel-spring.xsd
+  						http://www.springframework.org/schema/osgi-compendium 
+  						http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+  					 	http://www.springframework.org/schema/context 
+  					 	http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config />
+
+	<context:component-scan base-package="pl.com.agora.cinema.loader" />
+
+	<context:property-placeholder
+		properties-ref="props"></context:property-placeholder>
+
+	<bean name="stadionJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="stadionDataSource" />
+	</bean>
+
+	<bean name="outJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="outDataSource" />
+	</bean>
+
+
+	<bean name="stadionNamedParameterJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="stadionDataSource" />
+	</bean>
+
+	<bean name="outNamedParameterJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="outDataSource" />
+	</bean>
+
+
+	<!-- Mail sender configured for using Agora SMTP -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+		p:host="${mail.smtp}">
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">false</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="quartz" class="org.apache.camel.component.quartz.QuartzComponent">
+		<property name="propertiesFile" value="cinema-laoder-quartz.properties" />
+	</bean>
+
+	<bean id="cinemaTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="outDataSource" />
+	</bean>
+
+
+</beans>

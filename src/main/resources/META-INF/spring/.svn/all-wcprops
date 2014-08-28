@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/projekty_inp/!svn/ver/62802/cinema/cinema-loader/trunk/src/main/resources/META-INF/spring
+END
+bundle-camel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/projekty_inp/!svn/ver/62802/cinema/cinema-loader/trunk/src/main/resources/META-INF/spring/bundle-camel.xml
+END
+bundle-context-osgi.xml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/projekty_inp/!svn/ver/58133/cinema/cinema-loader/trunk/src/main/resources/META-INF/spring/bundle-context-osgi.xml
+END
+bundle-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/projekty_inp/!svn/ver/62361/cinema/cinema-loader/trunk/src/main/resources/META-INF/spring/bundle-context.xml
+END

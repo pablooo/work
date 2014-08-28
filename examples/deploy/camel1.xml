@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint
+xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.osgi.org/xmlns/blueprint/v1.0.0
+http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+<manifest xmlns="http://karaf.apache.org/xmlns/deployer/spring/v1.0.0">
+Bundle-SymbolicName: testowe
+Bundle-Version: 1.0.0
+</manifest>
+<camelContext xmlns="http://camel.apache.org/schema/blueprint">
+
+<route>
+  <from uri="file:camel/input?antInclude=*.txt"/>
+  <setHeader headerName="Exchange.FILE_NAME">
+    <constant>tekstowy.txt</constant>
+  </setHeader>  
+  <log message="Moving txt file: ${file:name} to the output directory"/>
+  <to uri="file:camel/output"/>
+  <!--to uri="file:target/reports/?fileName=report.txt" -->
+</route>
+
+<route>
+  <from uri="file:camel/input?fileName=ala.zip"/>
+  <log message="Moving ${file:name} to the output directory"/>
+  <to uri="file:camel/output"/>
+</route>
+
+</camelContext>
+</blueprint>
