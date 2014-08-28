@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
 import pl.eniro.smx.loader.filter.PoliticalFilter;
-import pl.eniro.smx.loader.processor.CounterProcessor;
 import pl.eniro.smx.loader.processor.PrintProcessor;
 
 /**
