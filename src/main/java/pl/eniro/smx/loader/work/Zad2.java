@@ -39,7 +39,7 @@ public class Zad2 extends RouteBuilder {
 
         onException(IllegalStateException.class, RuntimeException.class, Exception.class)
                 .handled(true)
-                .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
+                .to("log:Zad2?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
         //2. zabezpieczenie przed kopiowaniem nie pełnych plików na FTP uzywajac file:

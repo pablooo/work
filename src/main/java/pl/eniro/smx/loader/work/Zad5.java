@@ -35,11 +35,12 @@ public class Zad5 extends RouteBuilder {
 
         onException(IllegalStateException.class, RuntimeException.class, Exception.class)
                 .handled(true)
-                .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
+                .to("log:Zad5?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
         //5. wypisanie nazw plików w folderze in (i jego podfolderach) w odstępie 20s i bez ingerencji w pliki (nie przenosimy ich)
-
+         from(String.format("file://%s?delay=20000&recursive=true&noop=true", inputPath))
+          .log("${header.CamelFileName}");
 
         // @formatter:on
     }

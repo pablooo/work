@@ -35,7 +35,7 @@ public class Zad3 extends RouteBuilder {
 
         onException(IllegalStateException.class, RuntimeException.class, Exception.class)
                 .handled(true)
-                .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
+                .to("log:Zad3?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
         //3. przenoszenie plików *.txt z folderu examples i kopiowanie do:
