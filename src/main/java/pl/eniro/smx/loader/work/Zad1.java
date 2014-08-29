@@ -44,7 +44,6 @@ public class Zad1 extends RouteBuilder {
         //1. przenoszenie plików z folderu in (bez podfolderów) do folderu out w odstępie 20s
         //1' bean do zapamiętywania i wypisanie na konsoli SMX ilości plików skopiowanych (wtrakcie pojawienia się nowych plików)
 
- 
         // @formatter:on
         }
     }
