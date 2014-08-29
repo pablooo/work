@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
  * @author: pcieslinski
  */
 @Component
-public class Zad4 extends RouteBuilder {
+public class Zad5 extends RouteBuilder {
 
-    private final static Log LOGGER = LogFactory.getLog(Zad4.class);
+    private final static Log LOGGER = LogFactory.getLog(Zad5.class);
 
     @Value("${inputPath}")
     private String inputPath;
@@ -38,15 +38,8 @@ public class Zad4 extends RouteBuilder {
                 .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
-        //4. wczytwanie plików *.zip z folderu examples większych niż 100B i przenoszenie do folderu big_zip, inne zaś do small_zip
-        from(String.format("file://%s?delete=true&include=.*\\.zip", inputPath))
-		.log("starting example 4.")
-		  .choice()
-            .when(simple("${file:size} > 1000"))
-                .to(String.format("file://%s/big_zip", outPath))
-                .otherwise().to(String.format("file://%s/small_zip", outPath))
-            .endChoice()
-		.log("ending example 4");
+        //5. wypisanie nazw plików w folderze in (i jego podfolderach) w odstępie 20s i bez ingerencji w pliki (nie przenosimy ich)
+
 
         // @formatter:on
     }
