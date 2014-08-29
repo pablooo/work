@@ -43,9 +43,9 @@ public class Zad1 extends RouteBuilder {
 
         //1. przenoszenie plików z folderu in (bez podfolderów) do folderu out w odstępie 20s
         //1' bean do zapamiętywania i wypisanie na konsoli SMX ilości plików skopiowanych (wtrakcie pojawienia się nowych plików)
-        from(String.format("file://%s?delete=true&recursive=true&delay=20000", inputPath))
+        from(String.format("file://%s?delete=true&delay=20000", inputPath))
          .log("starting example 1.")
-         .to(String.format("file://%s", inputPath))
+         .to(String.format("file://%s", outPath))
          .beanRef("counterProcessor", "nextMessage")
          .log("ending example 1");
 

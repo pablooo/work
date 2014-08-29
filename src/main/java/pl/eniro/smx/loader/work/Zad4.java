@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
  * @author: pcieslinski
  */
 @Component
-public class Zad3 extends RouteBuilder {
+public class Zad4 extends RouteBuilder {
 
-    private final static Log LOGGER = LogFactory.getLog(Zad3.class);
+    private final static Log LOGGER = LogFactory.getLog(Zad4.class);
 
     @Value("${inputPath}")
     private String inputPath;
@@ -38,16 +38,8 @@ public class Zad3 extends RouteBuilder {
                 .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
-        //3. przenoszenie plików *.txt z folderu examples i kopiowanie do:
-        //folderu txt i backup_txt (tu ze zmieniona nazwą przedrostek backup -> backup_*.txt)
-        //przy kopiowaniu wypisać oryginalną nazwę pliku na konsoli
-        from(String.format("file://%s?delete=true&include=.*\\.txt", inputPath))
-         .log("starting example 3.")
-         .to(String.format("file://%s/txt", outPath))
-         .log("${header.CamelFileName}")
-         .setHeader("CamelFileName", simple("backup_${header.CamelFileName}"))
-         .to(String.format("file://%s/backup_txt", outPath))
-         .log("ending example 3");
+        //4. wczytwanie plików *.zip z folderu examples większych niż 100B i przenoszenie do folderu big_zip, inne zaś do small_zip
+
 
         // @formatter:on
     }
