@@ -34,7 +34,7 @@ public class Zad6 extends RouteBuilder {
         // @formatter:off
         onException(IllegalStateException.class, RuntimeException.class, Exception.class)
                 .handled(true)
-                .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
+                .to("log:Zad6?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
         //6. Przeszukanie plików .txt w folderze in i skopiowanie do katalogu "Zorro" jeśli w pliku jest słowo "Zorro"
