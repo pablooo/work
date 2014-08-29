@@ -4,6 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import pl.eniro.smx.loader.processor.PrintProcessor;
 
 /**
@@ -12,6 +13,7 @@ import pl.eniro.smx.loader.processor.PrintProcessor;
  * @author pabloc
  *
  */
+@Component
 public class Zad1 extends RouteBuilder {
 
     private final static Log LOGGER = LogFactory.getLog(PrintProcessor.class);
