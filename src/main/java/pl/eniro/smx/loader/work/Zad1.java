@@ -39,7 +39,6 @@ public class Zad1 extends RouteBuilder {
                 .to("log:Zad1?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
-        //TODO
         //1. przenoszenie plików z folderu in (bez podfolderów) do folderu out w odstępie 20s
         //1' bean do zapamiętywania i wypisanie na konsoli SMX ilości plików skopiowanych (wtrakcie pojawienia się nowych plików)
         from(String.format("file://%s?delete=true&recursive=true&delay=20000", inputPath))
