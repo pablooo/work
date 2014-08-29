@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
  * @author: pcieslinski
  */
 @Component
-public class Zad6 extends RouteBuilder {
+public class Zad7 extends RouteBuilder {
 
-    private final static Log LOGGER = LogFactory.getLog(Zad6.class);
+    private final static Log LOGGER = LogFactory.getLog(Zad7.class);
 
     @Value("${inputPath}")
     private String inputPath;
@@ -34,18 +34,12 @@ public class Zad6 extends RouteBuilder {
         // @formatter:off
         onException(IllegalStateException.class, RuntimeException.class, Exception.class)
                 .handled(true)
-                .to("log:Zad6?level=ERROR&showAll=true&multiline=true")
+                .to("log:Zad7?level=ERROR&showAll=true&multiline=true")
                 .stop();
 
-        //6. Przeszukanie plików .txt w folderze in i skopiowanie do katalogu "Zorro" jeśli w pliku jest słowo "Zorro"
-        //wpp. skopiować go do folderu "Other" (wskazówka1: choice)
-        from(String.format("file://%s?readLock=none&delete=true&include=.*\\.txt", inputPath))
-         .convertBodyTo(String.class)
-         .choice()
-            .when(body().contains("Zorro"))
-             .wireTap(String.format("file://%s/Zorro?readLock=none&delete=true&include=.*\\.txt", inputPath)).copy().end()
-           .otherwise()
-             .to(String.format("file://%s/other?readLock=none&delete=true&include=.*\\.txt", inputPath));
+        //7. Dodaj do kolejki "pkp" co 1s jakiś komunikat i utwórz monitoring ilości elementów w kolejce (nazwa z parametru) co 5sek
+        //7' Rozmnoz komunikaty x2 :D
+
 
         // @formatter:on
     }

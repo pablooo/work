@@ -23,7 +23,7 @@
 
     <camelContext id="camelZad2" xmlns="http://camel.apache.org/schema/spring"
                   autoStartup="true">
-        <routeBuilder ref="zad5" />
+        <routeBuilder ref="zad7" />
     </camelContext>
 
 	<bean id="shutdown" class="org.apache.camel.impl.DefaultShutdownStrategy">
