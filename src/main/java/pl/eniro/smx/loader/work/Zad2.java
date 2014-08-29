@@ -4,6 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import pl.eniro.smx.loader.processor.PrintProcessor;
 
 /**
@@ -12,7 +13,8 @@ import pl.eniro.smx.loader.processor.PrintProcessor;
  * @author pabloc
  *
  */
-public class Zad1 extends RouteBuilder {
+@Component
+public class Zad2 extends RouteBuilder {
 
     private final static Log LOGGER = LogFactory.getLog(PrintProcessor.class);
 
@@ -33,6 +35,7 @@ public class Zad1 extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
+	
 	// @formatter:off
         onException(IllegalStateException.class, RuntimeException.class, Exception.class)
                 .handled(true)
@@ -40,14 +43,8 @@ public class Zad1 extends RouteBuilder {
                 .stop();
 
         //TODO
-        //1. przenoszenie plików z folderu in (bez podfolderów) do folderu out w odstępie 20s
-        //1' bean do zapamiętywania i wypisanie na konsoli SMX ilości plików skopiowanych (wtrakcie pojawienia się nowych plików)
-        from(String.format("file://%s?delete=true&recursive=true&delay=20000", inputPath))
-         .log("starting example 1.")
-         .to(String.format("file://%s", inputPath))
-         .beanRef("counterProcessor", "nextMessage")
-         .log("ending example 1");
+        //2. zabezpieczenie przed kopiowaniem nie pełnych plików na FTP uzywajac file:
 
-    // @formatter:on
-    }
+        // @formatter:on
+        }
 }
