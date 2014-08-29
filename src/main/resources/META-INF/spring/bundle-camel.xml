@@ -14,6 +14,8 @@
 	<bean id="prepareXmlDataLoadProcessing"
 		class="pl.eniro.smx.loader.PrepareXMLDataLoadeRouteBuilder">
 	</bean>
+    <bean id="zad1" class="pl.eniro.smx.loader.work.Zad1">
+	</bean>
 
 	<!-- Routes configuration -->
 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring"
